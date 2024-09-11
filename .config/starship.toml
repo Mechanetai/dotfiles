@@ -1,3 +1,16 @@
+continuation_prompt = '[❯❯ ](fg:blue)'
+
+[directory]
+style = "fg:blue"
+format = "[$path]($style)"
+truncation_length = 4
+truncation_symbol = "..."
+truncate_to_repo = false
+
+[character]
+success_symbol = '[❯❯❯](fg:blue)'
+error_symbol = '[❯❯❯](fg:red)'
+
 [git_status]
 style = "fg:blue"
 format = '([\[$all_status$ahead_behind\]]($style))'
@@ -6,7 +19,7 @@ format = '([\[$all_status$ahead_behind\]]($style))'
 [git_branch]
 format = " [$symbol $branch]($style)"
 style = "fg:#888888"
-symbol = ""
+symbol = ""
 
 
 [git_metrics]

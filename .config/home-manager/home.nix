@@ -1,8 +1,12 @@
 { config, pkgs, ... }:
 
-{
-  home.username = "netai";
-  home.homeDirectory = "/home/netai";
+let
+  username = builtins.getEnv "USER"; # 環境変数$USERを取得
+  homeDir = builtins.getEnv "HOME"; # 環境変数$HOMEを取得
+in
+{ 
+  home.username = username;
+  home.homeDirectory = homeDir;
 
   home.stateVersion = "24.11"; 
 
@@ -16,29 +20,18 @@
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    dotDir = ".config/zsh";
+    enableCompletion = true; # zsh-completionsを有効化
+    autosuggestion.enable = true; # zsh-autosuggestionsを有効化
+    syntaxHighlighting.enable = true; # zsh-syntax-highlightingを有効化
+    dotDir = ".config/zsh"; # zshの設定ファイルを格納するディレクトリを指定
     initExtra = ''
-      . ~/.nix-profile/etc/profile.d/nix.sh
-      . ~/.config/zsh/.zsh.d/zsh-d-manager.sh
-    '';
+      . $HOME/.nix-profile/etc/profile.d/nix.sh
+      . $HOME/.config/zsh/.zsh.d/zsh-d-manager.sh
+    ''; # nix.shはNixの環境変数を読み込むためのスクリプト(home-managerを使うため)
   };
 
   programs.starship = {
     enable = true;
-    # Configuration written to ~/.config/starship.toml
-    # settings = {
-    #   add_newline = false;
-
-    #   character = {
-    #     success_symbol = "[➜](bold green)";
-    #     error_symbol = "[➜](bold red)";
-    #   };
-
-    #   # package.disabled = true;
-    # };
   };
 
   home.packages = [
@@ -47,14 +40,14 @@
   ];
 
   home.file = {
-    ".config/nvim".source = ~/dotfiles/.config/nvim;
-    ".config/python".source = ~/dotfiles/.config/python;
-    ".config/zsh/.zsh.d".source = ~/dotfiles/.config/zsh/.zsh.d;
-    ".config/starship.toml".source = ~/dotfiles/.config/starship.toml;
+    ".config/nvim".source = "${homeDir}/dotfiles/.config/nvim";
+    ".config/python".source = "${homeDir}/dotfiles/.config/python";
+    ".config/zsh/.zsh.d".source = "${homeDir}/dotfiles/.config/zsh/.zsh.d";
+    ".config/starship.toml".source = "${homeDir}/dotfiles/.config/starship.toml";
   };
 
   home.sessionVariables = {
-    PYTHONSTARTUP = "~/.config/python/pythonstartup.py";
+    PYTHONSTARTUP = "${homeDir}/.config/python/pythonstartup.py";
   };
 
   programs.home-manager.enable = true;

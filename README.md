@@ -16,3 +16,10 @@ home-managerだとzshのインストールはできないらしい
 
 次にnixをインストール
 <https://nixos.org/download/>
+
+最後にhome-managerをインストール(init_home_nix.sh)
+
+## home.nix変更時
+
+`home-manager switch`: 変更を適用
+`exec $SHELL -l`: シェル再起動
