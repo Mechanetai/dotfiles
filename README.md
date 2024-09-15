@@ -23,3 +23,10 @@ home-managerだとzshのインストールはできないらしい
 
 `home-manager switch`: 変更を適用
 `exec $SHELL -l`: シェル再起動
+
+## 備考
+
+### vscodeでの.nixのシンタックスハイライトについて
+
+あんまり良さげな拡張機能がなかった
+とりあえず.nixファイルはviで編集すればいいかな

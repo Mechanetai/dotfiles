@@ -19,3 +19,8 @@ vim.api.nvim_set_keymap('n', 'x', 'd', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x', 'x', 'd', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'xx', 'dd', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'X', 'D', { noremap = true, silent = true })
+
+-- タブの幅を2スペースに設定
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true

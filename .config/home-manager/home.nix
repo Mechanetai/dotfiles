@@ -30,9 +30,8 @@ in
     ''; # nix.shはNixの環境変数を読み込むためのスクリプト(home-managerを使うため)
   };
 
-  programs.starship = {
-    enable = true;
-  };
+  programs.starship.enable = true;
+  programs.home-manager.enable = true;
 
   home.packages = [
     pkgs.git
@@ -50,5 +49,4 @@ in
     PYTHONSTARTUP = "${homeDir}/.config/python/pythonstartup.py";
   };
 
-  programs.home-manager.enable = true;
 }

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Install Nix
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+. /home/vscode/.nix-profile/etc/profile.d/nix.sh
+
+# Link home.nix
+mkdir -p ~/.config/home-manager
+ln -s "$HOME/dotfiles/.config/home-manager/home.nix" "$HOME/.config/home-manager/"
+
+# Install Home Manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+nix-shell '<home-manager>' -A install
+
+home-manager switch
+cd $HOME
