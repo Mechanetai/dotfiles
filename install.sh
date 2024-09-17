@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install Nix
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
+bash <(curl -L https://nixos.org/nix/install) --no-daemon
 . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 
 # Link home.nix
