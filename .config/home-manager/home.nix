@@ -25,9 +25,15 @@ in
     syntaxHighlighting.enable = true; # zsh-syntax-highlightingを有効化
     dotDir = ".config/zsh"; # zshの設定ファイルを格納するディレクトリを指定
     initExtra = ''
-      . $HOME/.nix-profile/etc/profile.d/nix.sh
-      . $HOME/.config/zsh/.zsh.d/zsh-d-manager.sh
-    ''; # nix.shはNixの環境変数を読み込むためのスクリプト(home-managerを使うため)
+      nixDaemonPath="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
+      [ -e $nixDaemonPath ] && . $nixDaemonPath
+
+      nixProfilePath="$HOME/.nix-profile/etc/profile.d/nix.sh"
+      [ -e $nixProfilePath ] && . $nixProfilePath
+
+      zshManagerPath="$HOME/.config/zsh/.zsh.d/zsh-d-manager.sh"
+      [ -e $zshManagerPath ] && . $zshManagerPath
+    ''; # nix(-daemon).shはNixの環境変数を読み込むためのスクリプト(home-managerを使うため)
   };
 
   programs.starship.enable = true;
@@ -36,6 +42,7 @@ in
   home.packages = [
     pkgs.git
     pkgs.fzf
+    pkgs.nerdfonts
   ];
 
   home.file = {
