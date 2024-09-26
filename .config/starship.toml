@@ -2,7 +2,7 @@ continuation_prompt = '[❯❯ ](fg:blue)'
 
 [directory]
 style = "fg:blue"
-format = "[$path]($style)"
+format = "[$path]($style) "
 truncation_length = 4
 truncation_symbol = "..."
 truncate_to_repo = false
@@ -27,3 +27,9 @@ disabled = false
 added_style = 'bold blue'
 format = '\([+$added]($added_style)/[-$deleted]($deleted_style)\)'
 only_nonzero_diffs = true
+
+[custom.devbox]
+when = "[[ $DEVBOX_SHELL_ENABLED=1 ]]"
+style = "bold purple"
+symbol = " devbox"
+format = "[$symbol]($style)"
