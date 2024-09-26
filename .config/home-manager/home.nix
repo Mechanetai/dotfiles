@@ -42,7 +42,9 @@ in
   home.packages = [
     pkgs.git
     pkgs.fzf
-    pkgs.nerdfonts
+    pkgs.lunarvim
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    pkgs.devbox
   ];
 
   home.file = {
