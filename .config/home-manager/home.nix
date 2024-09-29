@@ -41,6 +41,7 @@ in
 
   home.packages = [
     pkgs.git
+    pkgs.gh
     pkgs.fzf
     pkgs.lunarvim
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
