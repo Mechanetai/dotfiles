@@ -43,6 +43,7 @@ in
     pkgs.git
     pkgs.gh
     pkgs.fzf
+    pkgs.tree
     pkgs.lunarvim
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     pkgs.devbox
